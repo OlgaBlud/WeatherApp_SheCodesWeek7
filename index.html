@@ -15,37 +15,46 @@
   </head>
   <body>
     <div class="container">
-      <div class="weather-block">
-        <h1>Kyiv</h1>
-        <ul>
-          <li>Friday 14:15</li>
-          <li>Sun</li>
-        </ul>
-        <div class="row">
-          <div class="col-6">
-            <img
-              src="https://png.pngtree.com/png-clipart/20201208/original/pngtree-sun-clipart-yellow-cartoon-cute-sun-png-image_5564321.png"
-              alt="Sun"
-              width="50"
-            />
-            27º С | Fº
-          </div>
-          <div class="col-6">
+      <div class="weather-wrapper">
+        <div class="weather-block">
+          <div class="overview">
+            <h1>Kyiv</h1>
             <ul>
-              <li>Precipitation: 0%</li>
-              <li>Humidity: 73%</li>
-              <li>Wind: 2 km/h</li>
+              <li>Friday 14:15</li>
+              <li>Sun</li>
             </ul>
           </div>
+          <div class="row">
+            <div class="col-6">
+              <div class="d-flex weather-temperature">
+                <img
+                  src="https://png.pngtree.com/png-clipart/20201208/original/pngtree-sun-clipart-yellow-cartoon-cute-sun-png-image_5564321.png"
+                  alt="Sun"
+                  id="icon"
+                />
+                <div>
+                  <strong id="temperature">27</strong>
+                  <span class="units"> ºС | <a href="#">ºF</a> </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <ul>
+                <li>Precipitation: 0%</li>
+                <li>Humidity: 73%</li>
+                <li>Wind: 2 km/h</li>
+              </ul>
+            </div>
+          </div>
         </div>
+        <small>
+          <a
+            href="https://github.com/OlgaBlud/WeatherApp_SheCodesWeek7"
+            target="_blank"
+            >Open-source code</a
+          >, by Olga Blud
+        </small>
       </div>
-      <small>
-        <a
-          href="https://github.com/OlgaBlud/WeatherApp_SheCodesWeek7"
-          target="_blank"
-          >Open-source code</a
-        >, by Olga Blud
-      </small>
     </div>
     <script src="./index.js"></script>
   </body>
