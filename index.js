@@ -1,7 +1,10 @@
-let city = "Netherlands";
+// let city = "Netherlands";
+// let city = "kyiv";
+let city = "tokio";
 let apiKey = "1a87a8te48d8o34feb04cce044538ce4";
 let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
 // console.log(apiUrl);
+axios.get(apiUrl).then(displayTemperature);
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
@@ -9,12 +12,14 @@ function displayTemperature(response) {
   let humidity = document.querySelector("#humidity");
   let wind = document.querySelector("#wind");
   let date = document.querySelector("#date");
+  let icon = document.querySelector("#icon");
   temperatureElement.innerHTML = Math.round(response.data.temperature.current);
   cityElement.innerHTML = response.data.city;
   weatherDescription.innerHTML = response.data.condition.description;
   humidity.innerHTML = response.data.temperature.humidity;
   wind.innerHTML = Math.round(response.data.wind.speed);
   date.innerHTML = formatDate(response.data.time * 1000);
+  icon.setAttribute('src', response.data.condition.icon_url) = response.data.condition.icon;
 }
 function formatDate(timestamp) {
   let currentDate = new Date(timestamp);
@@ -38,4 +43,3 @@ function formatDate(timestamp) {
   }
   return `${day} ${hours}:${minutes}`;
 }
-axios.get(apiUrl).then(displayTemperature);
