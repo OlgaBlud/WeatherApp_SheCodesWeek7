@@ -20,7 +20,8 @@ function displayTemperature(response) {
   let wind = document.querySelector("#wind");
   let date = document.querySelector("#date");
   let icon = document.querySelector("#icon");
-  temperatureElement.innerHTML = Math.round(response.data.temperature.current);
+  celsiusTemperature = response.data.temperature.current;
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
   cityElement.innerHTML = response.data.city;
   weatherDescription.innerHTML = response.data.condition.description;
   humidity.innerHTML = response.data.temperature.humidity;
@@ -51,3 +52,27 @@ function formatDate(timestamp) {
   }
   return `${day} ${hours}:${minutes}`;
 }
+let celsiusTemperature = null;
+let fahrenheitUnit = document.querySelector("#fahrenheit-unit");
+fahrenheitUnit.addEventListener("click", showFahrenheitTemperature);
+let celsiusUnit = document.querySelector("#celsius-unit");
+celsiusUnit.addEventListener("click", showCelsiusTemperature);
+
+function showCelsiusTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+  fahrenheitUnit.classList.remove("active");
+  celsiusUnit.classList.add("active");
+}
+function showFahrenheitTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  fahrenheitUnit.classList.add("active");
+  celsiusUnit.classList.remove("active");
+
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+searchWeatherForCity("Kyiv");
