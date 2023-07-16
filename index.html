@@ -18,31 +18,42 @@
     <div class="container">
       <div class="weather-wrapper">
         <div class="weather-block">
+          <form id="search-form" class="mb-3">
+            <div class="row">
+              <div class="col-9">
+                <input
+                  type="search"
+                  placeholder="Type a city"
+                  class="form-control"
+                  id="city-input"
+                />
+              </div>
+              <div class="col-3">
+                <input type="submit" value="Search" class="btn btn-primary" />
+              </div>
+            </div>
+          </form>
           <div class="overview">
-            <h1 id="city">Kyiv</h1>
+            <h1 id="city">City</h1>
             <ul>
               <li>Last updated: <span id="date"></span></li>
-              <li id="description">Sun</li>
+              <li id="description">Weather description</li>
             </ul>
           </div>
           <div class="row">
             <div class="col-6">
               <div class="d-flex weather-temperature">
-                <img
-                  src="https://png.pngtree.com/png-clipart/20201208/original/pngtree-sun-clipart-yellow-cartoon-cute-sun-png-image_5564321.png"
-                  alt="Sun"
-                  id="icon"
-                />
+                <img src="" alt="Sun" id="icon" />
                 <div>
-                  <strong id="temperature">27</strong>
+                  <strong id="temperature">Num</strong>
                   <span class="units"> ºС | <a href="#">ºF</a> </span>
                 </div>
               </div>
             </div>
             <div class="col-6">
               <ul>
-                <li>Humidity: <span id="humidity">73</span>%</li>
-                <li>Wind: <span id="wind">2</span> km/h</li>
+                <li>Humidity: <span id="humidity">Num</span>%</li>
+                <li>Wind: <span id="wind">Num</span> km/h</li>
               </ul>
             </div>
           </div>

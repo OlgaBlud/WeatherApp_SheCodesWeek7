@@ -1,10 +1,17 @@
-// let city = "Netherlands";
-// let city = "kyiv";
-let city = "tokio";
-let apiKey = "1a87a8te48d8o34feb04cce044538ce4";
-let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
-// console.log(apiUrl);
-axios.get(apiUrl).then(displayTemperature);
+let searchForm = document.querySelector("#search-form");
+searchForm.addEventListener("submit", handleSubmit);
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  searchWeatherForCity(cityInputElement.value);
+}
+function searchWeatherForCity(city) {
+  let apiKey = "1a87a8te48d8o34feb04cce044538ce4";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+  // console.log(apiUrl);
+  axios.get(apiUrl).then(displayTemperature);
+}
+
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
@@ -19,7 +26,8 @@ function displayTemperature(response) {
   humidity.innerHTML = response.data.temperature.humidity;
   wind.innerHTML = Math.round(response.data.wind.speed);
   date.innerHTML = formatDate(response.data.time * 1000);
-  icon.setAttribute('src', response.data.condition.icon_url) = response.data.condition.icon;
+  icon.setAttribute("src", response.data.condition.icon_url);
+  icon.setAttribute("alt", response.data.condition.icon);
 }
 function formatDate(timestamp) {
   let currentDate = new Date(timestamp);
