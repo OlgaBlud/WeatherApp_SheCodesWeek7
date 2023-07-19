@@ -1,5 +1,10 @@
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
+let celsiusTemperature = null;
+let fahrenheitUnit = document.querySelector("#fahrenheit-unit");
+fahrenheitUnit.addEventListener("click", showFahrenheitTemperature);
+let celsiusUnit = document.querySelector("#celsius-unit");
+celsiusUnit.addEventListener("click", showCelsiusTemperature);
 function handleSubmit(event) {
   event.preventDefault();
   let cityInputElement = document.querySelector("#city-input");
@@ -11,7 +16,6 @@ function searchWeatherForCity(city) {
   // console.log(apiUrl);
   axios.get(apiUrl).then(displayTemperature);
 }
-
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
@@ -52,12 +56,6 @@ function formatDate(timestamp) {
   }
   return `${day} ${hours}:${minutes}`;
 }
-let celsiusTemperature = null;
-let fahrenheitUnit = document.querySelector("#fahrenheit-unit");
-fahrenheitUnit.addEventListener("click", showFahrenheitTemperature);
-let celsiusUnit = document.querySelector("#celsius-unit");
-celsiusUnit.addEventListener("click", showCelsiusTemperature);
-
 function showCelsiusTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
@@ -74,5 +72,4 @@ function showFahrenheitTemperature(event) {
   let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
-
 searchWeatherForCity("Kyiv");
