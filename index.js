@@ -33,6 +33,7 @@ function displayTemperature(response) {
   date.innerHTML = formatDate(response.data.time * 1000);
   icon.setAttribute("src", response.data.condition.icon_url);
   icon.setAttribute("alt", response.data.condition.icon);
+  displayForecast();
 }
 function formatDate(timestamp) {
   let currentDate = new Date(timestamp);
@@ -73,3 +74,28 @@ function showFahrenheitTemperature(event) {
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
 searchWeatherForCity("Kyiv");
+
+function displayForecast() {
+  let forecastDayElement = document.querySelector("#weather-forecast");
+  let forecastHtml = `<div class="row">`;
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue"];
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `<div class="col-2">
+                <div class="weather-forecast-day">${day}</div>
+                <img
+                  src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/scattered-clouds-day.png"
+                  alt=""
+                  width="42"
+                />
+                <div class="weather-forecast-temperatures">
+                  <span class="weather-forecast-temperature-max">18</span>
+                  <span class="weather-forecast-temperature-min">12</span>
+                </div>
+              </div>`;
+  });
+  forecastHtml = forecastHtml + `</div>`;
+
+  forecastDayElement.innerHTML = forecastHtml;
+}
